@@ -1,0 +1,506 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Metric Converter</title>
+  <link rel="icon" type="image/png" href="image/logo.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  </head>
+
+  <body>
+
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+    <div class="container">
+
+      <!-- Brand Logo + Name -->
+      <a class="navbar-brand d-flex align-items-center fw-bold logo-hover" href="index.html">
+        <img src="image/logo.png" alt="Logo" class="me-2" style="height:45px; width:auto;">
+        Metric Converter
+      </a>
+
+      <!-- Toggler for Mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+
+          <li class="nav-item">
+            <a class="nav-link active link-hover" href="index.html">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link link-hover" href="chart.html">Conversion Chart</a>
+          </li>
+
+          <!-- Converters Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle link-hover" href="#" id="converterDropdown" role="button" data-bs-toggle="dropdown">
+              Converters
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-hover" aria-labelledby="converterDropdown">
+              <li><a class="dropdown-item" href="length.html">Length</a></li>
+              <li><a class="dropdown-item" href="area.html">Area</a></li>
+              <li><a class="dropdown-item" href="volume.html">Volume</a></li>
+              <li><a class="dropdown-item" href="mass.html">Mass</a></li>
+              <li><a class="dropdown-item" href="temperature.html">Temperature</a></li>
+              <li><a class="dropdown-item" href="currency.html">Currency</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link link-hover" href="history.html">History</a></li>
+          <li class="nav-item"><a class="nav-link link-hover" href="articles.html">Articles</a></li>
+          <li class="nav-item"><a class="nav-link link-hover" href="faq.html">FAQ</a></li>
+
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO SLIDER -->
+
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+  <div class="carousel-inner">
+
+  <div class="carousel-item active" data-bs-interval="4000">
+
+  <img src="image/bg.jpg" class="d-block w-100" style="height:80vh;object-fit:cover;">
+
+  <div class="carousel-caption">
+
+  <h1 class="fw-bold">Metric Converter</h1>
+
+  <p class="lead">
+  Convert Length, Area, Volume, Mass, Temperature and Currency Instantly
+  </p>
+
+  <a href="length.html" class="btn btn-primary mt-3">
+  Start Converting
+  </a>
+
+  </div>
+
+  </div>
+
+
+  <div class="carousel-item" data-bs-interval="4000">
+
+  <img src="image/bg2.jpg" class="d-block w-100" style="height:80vh;object-fit:cover;">
+
+  <div class="carousel-caption">
+
+  <h1 class="fw-bold">Fast & Accurate Conversion</h1>
+
+  <p class="lead">
+  Scientific metric conversions made simple and easy
+  </p>
+
+  </div>
+
+  </div>
+
+
+  <div class="carousel-item" data-bs-interval="4000">
+
+  <img src="image/bg3.jpg" class="d-block w-100" style="height:80vh;object-fit:cover;">
+
+  <div class="carousel-caption">
+
+  <h1 class="fw-bold">Modern Web Application</h1>
+
+  <p class="lead">
+  Built using Bootstrap, JavaScript and jQuery
+  </p>
+
+  </div>
+
+  </div>
+
+  </div>
+
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+  <span class="carousel-control-next-icon"></span>
+  </button>
+
+  </div>
+
+
+
+  <!-- STATS -->
+
+  <section class="container text-center mt-5">
+
+  <div class="row g-4">
+
+  <div class="col-md-3">
+
+  <div class="card shadow-sm border-0 p-3">
+
+  <h1 class="counter text-primary" data-target="6">0</h1>
+
+  <p class="text-muted">Conversion Tools</p>
+
+  </div>
+
+  </div>
+
+
+  <div class="col-md-3">
+
+  <div class="card shadow-sm border-0 p-3">
+
+  <h1 class="counter text-primary" data-target="10">0</h1>
+
+  <p class="text-muted">Measurement Units</p>
+
+  </div>
+
+  </div>
+
+
+  <div class="col-md-3">
+
+  <div class="card shadow-sm border-0 p-3">
+
+  <h1 class="counter text-primary" data-target="4">0</h1>
+
+  <p class="text-muted">Articles</p>
+
+  </div>
+
+  </div>
+
+
+  <div class="col-md-3">
+
+  <div class="card shadow-sm border-0 p-3">
+
+  <h1 class="counter text-primary" data-target="5">0</h1>
+
+  <p class="text-muted">FAQs</p>
+
+  </div>
+
+  </div>
+
+  </div>
+
+  </section>
+
+
+
+
+  <section class="container text-center mt-5">
+
+  <h2 class="fw-bold">Why Use Our Converter?</h2>
+
+  <div class="row mt-4">
+
+  <div class="col-md-4">
+
+  <i class="fa-solid fa-bolt fa-2x text-primary"></i>
+
+  <h5 class="mt-3">Fast</h5>
+
+  <p>Instant and accurate conversions.</p>
+
+  </div>
+
+
+  <div class="col-md-4">
+
+  <i class="fa-solid fa-mobile-screen-button fa-2x text-primary"></i>
+
+  <h5 class="mt-3">Responsive</h5>
+
+  <p>Works perfectly on all devices.</p>
+
+  </div>
+
+
+  <div class="col-md-4">
+
+  <i class="fa-solid fa-shield-halved fa-2x text-primary"></i>
+
+  <h5 class="mt-3">Reliable</h5>
+
+  <p>Trusted measurement formulas.</p>
+
+  </div>
+
+  </div>
+
+  </section>
+
+
+
+  <!-- CONVERTERS -->
+
+  <section class="container mt-5">
+
+  <div class="text-center mb-4">
+
+  <h2 class="fw-bold">Conversion Tools</h2>
+
+  <p class="text-muted">Choose a converter below</p>
+
+  </div>
+
+
+  <div class="row g-4">
+
+
+  <div class="col-md-4">
+
+  <div class="card shadow h-100">
+
+  <div class="card-body text-center">
+
+  <h4>
+  <i class="fa-solid fa-ruler-combined text-primary"></i>
+  Length Converter
+  </h4>
+
+  <p>Convert inches, feet, yards and miles into metric units.</p>
+
+  <a href="length.html" class="btn btn-primary">Convert</a>
+
+  </div>
+
+  </div>
+
+  </div>
+
+
+  <div class="col-md-4">
+
+  <div class="card shadow h-100">
+
+  <div class="card-body text-center">
+
+  <h4>
+  <i class="fa-solid fa-vector-square text-primary"></i>
+  Area Converter
+  </h4>
+
+  <p>Convert square feet, yards, acres and miles.</p>
+
+  <a href="area.html" class="btn btn-primary">Convert</a>
+
+  </div>
+
+  </div>
+
+  </div>
+
+
+  <div class="col-md-4">
+
+  <div class="card shadow h-100">
+
+  <div class="card-body text-center">
+
+  <h4>
+  <i class="fa-solid fa-cube text-primary"></i>
+  Volume Converter
+  </h4>
+
+  <p>Convert gallons, ounces, cubic feet and cubic yards.</p>
+
+  <a href="volume.html" class="btn btn-primary">Convert</a>
+
+  </div>
+
+  </div>
+
+  </div>
+
+
+  <div class="col-md-4">
+
+  <div class="card shadow h-100">
+
+  <div class="card-body text-center">
+
+  <h4>
+  <i class="fa-solid fa-weight-hanging text-primary"></i>
+  Mass Converter
+  </h4>
+
+  <p>Convert ounces, pounds and tons.</p>
+
+  <a href="mass.html" class="btn btn-primary">Convert</a>
+
+  </div>
+
+  </div>
+
+  </div>
+
+
+  <div class="col-md-4">
+
+  <div class="card shadow h-100">
+
+  <div class="card-body text-center">
+
+  <h4>
+  <i class="fa-solid fa-temperature-half text-primary"></i>
+  Temperature Converter
+  </h4>
+
+  <p>Convert Celsius and Fahrenheit values.</p>
+
+  <a href="temperature.html" class="btn btn-primary">Convert</a>
+
+  </div>
+
+  </div>
+
+  </div>
+
+
+  <div class="col-md-4">
+
+  <div class="card shadow h-100">
+
+  <div class="card-body text-center">
+
+  <h4>
+  <i class="fa-solid fa-money-bill-wave text-primary"></i>
+  Currency Converter
+  </h4>
+
+  <p>Convert global currencies including PKR.</p>
+
+  <a href="currency.html" class="btn btn-primary">Convert</a>
+
+  </div>
+
+  </div>
+
+  </div>
+
+  </div>
+
+  </section>
+
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+  <div class="container">
+
+  <div class="row">
+
+  <div class="col-md-4">
+
+  <h4 class="footer-title">Metric Converter</h4>
+
+  <p class="footer-text">
+  Metric Converter is a modern web application designed to help users easily convert
+  different measurement units including length, area, volume, mass, temperature,
+  and currency.
+  </p>
+
+  </div>
+
+  <div class="col-md-2">
+
+  <h5 class="footer-title">Quick Links</h5>
+
+  <ul class="footer-links">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="chart.html">Conversion Chart</a></li>
+  <li><a href="history.html">History</a></li>
+  <li><a href="articles.html">Articles</a></li>
+  <li><a href="faq.html">FAQ</a></li>
+  </ul>
+
+  </div>
+
+  <div class="col-md-3">
+
+  <h5 class="footer-title">Converters</h5>
+
+  <ul class="footer-links">
+  <li><a href="length.html">Length Converter</a></li>
+  <li><a href="area.html">Area Converter</a></li>
+  <li><a href="volume.html">Volume Converter</a></li>
+  <li><a href="mass.html">Mass Converter</a></li>
+  <li><a href="temperature.html">Temperature</a></li>
+  <li><a href="currency.html">Currency</a></li>
+  </ul>
+
+  </div>
+
+  <div class="col-md-3">
+
+  <h5 class="footer-title">Contact</h5>
+
+  <p class="footer-contact">
+  📍 Karachi, Pakistan
+  </p>
+
+  <p class="footer-contact">
+  📧 metricconverter.com
+  </p>
+
+  <p class="footer-contact">
+  📞 +92 300 1234567
+  </p>
+
+  <div class="footer-social">
+
+  <a href="#"><i class="fab fa-facebook-f"></i></a>
+  <a href="#"><i class="fab fa-twitter"></i></a>
+  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+  <a href="#"><i class="fab fa-github"></i></a>
+
+  </div>
+
+  </div>
+
+  </div>
+
+  </div>
+
+  <div class="footer-bottom">
+
+  <p>
+  © 2026 Metric Converter. All Rights Reserved.
+  </p>
+
+  </div>
+
+  </footer>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="javascript/script.js"></script>
+
+  </body>
+  </html>
