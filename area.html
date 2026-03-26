@@ -74,14 +74,16 @@
 
         <div class="row g-3">
 
+          <!-- Input -->
           <div class="col-md-4">
             <label class="form-label">Value</label>
             <input type="number" id="areaValue" class="form-control" placeholder="Enter value">
           </div>
 
+          <!-- From -->
           <div class="col-md-4">
             <label class="form-label">From</label>
-            <select id="fromUnit" class="form-select">
+            <select id="areaFrom" class="form-select">
               <option value="sq_m">Square Meter</option>
               <option value="sq_km">Square Kilometer</option>
               <option value="sq_cm">Square Centimeter</option>
@@ -92,9 +94,10 @@
             </select>
           </div>
 
+          <!-- To -->
           <div class="col-md-4">
             <label class="form-label">To</label>
-            <select id="toUnit" class="form-select">
+            <select id="areaTo" class="form-select">
               <option value="sq_m">Square Meter</option>
               <option value="sq_km">Square Kilometer</option>
               <option value="sq_cm">Square Centimeter</option>
@@ -107,6 +110,7 @@
 
         </div>
 
+        <!-- Result -->
         <div class="text-center mt-4">
           <h4>Result</h4>
           <h2 id="areaResult" class="text-primary fw-bold">0</h2>

@@ -1,15 +1,14 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
      LENGTH CONVERTER
   ========================= */
   const lengthValue = document.getElementById("lengthValue");
-  const lengthFrom = document.getElementById("fromUnit");
-  const lengthTo = document.getElementById("toUnit");
+  const lengthFrom = document.getElementById("lengthFrom");
+  const lengthTo = document.getElementById("lengthTo");
   const lengthResult = document.getElementById("lengthResult");
 
   if (lengthValue && lengthFrom && lengthTo && lengthResult) {
-
     const lengthFactors = {
       mm: 0.001,
       cm: 0.01,
@@ -24,10 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function convertLength() {
       let value = parseFloat(lengthValue.value);
       if (isNaN(value)) return lengthResult.innerText = "0";
-
       let meters = value * lengthFactors[lengthFrom.value];
       let result = meters / lengthFactors[lengthTo.value];
-
       lengthResult.innerText = result.toFixed(6);
     }
 
@@ -36,17 +33,15 @@ document.addEventListener("DOMContentLoaded", function () {
     lengthTo.addEventListener("change", convertLength);
   }
 
-
   /* =========================
      MASS CONVERTER
   ========================= */
   const massValue = document.getElementById("massValue");
-  const massFrom = document.getElementById("fromUnit");
-  const massTo = document.getElementById("toUnit");
+  const massFrom = document.getElementById("massFrom");
+  const massTo = document.getElementById("massTo");
   const massResult = document.getElementById("massResult");
 
   if (massValue && massFrom && massTo && massResult) {
-
     const massFactors = {
       mg: 0.000001,
       g: 0.001,
@@ -59,10 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function convertMass() {
       let value = parseFloat(massValue.value);
       if (isNaN(value)) return massResult.innerText = "0";
-
       let kg = value * massFactors[massFrom.value];
       let result = kg / massFactors[massTo.value];
-
       massResult.innerText = result.toFixed(6);
     }
 
@@ -71,17 +64,15 @@ document.addEventListener("DOMContentLoaded", function () {
     massTo.addEventListener("change", convertMass);
   }
 
-
   /* =========================
      AREA CONVERTER
   ========================= */
   const areaValue = document.getElementById("areaValue");
-  const areaFrom = document.getElementById("fromUnit");
-  const areaTo = document.getElementById("toUnit");
+  const areaFrom = document.getElementById("areaFrom");
+  const areaTo = document.getElementById("areaTo");
   const areaResult = document.getElementById("areaResult");
 
   if (areaValue && areaFrom && areaTo && areaResult) {
-
     const areaFactors = {
       sq_mm: 0.000001,
       sq_cm: 0.0001,
@@ -97,10 +88,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function convertArea() {
       let value = parseFloat(areaValue.value);
       if (isNaN(value)) return areaResult.innerText = "0";
-
       let sqm = value * areaFactors[areaFrom.value];
       let result = sqm / areaFactors[areaTo.value];
-
       areaResult.innerText = result.toFixed(6);
     }
 
@@ -109,17 +98,15 @@ document.addEventListener("DOMContentLoaded", function () {
     areaTo.addEventListener("change", convertArea);
   }
 
-
   /* =========================
      VOLUME CONVERTER
   ========================= */
   const volumeValue = document.getElementById("volumeValue");
-  const volumeFrom = document.getElementById("fromUnit");
-  const volumeTo = document.getElementById("toUnit");
+  const volumeFrom = document.getElementById("volumeFrom");
+  const volumeTo = document.getElementById("volumeTo");
   const volumeResult = document.getElementById("volumeResult");
 
   if (volumeValue && volumeFrom && volumeTo && volumeResult) {
-
     const volumeFactors = {
       ml: 0.000001,
       liters: 0.001,
@@ -133,10 +120,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function convertVolume() {
       let value = parseFloat(volumeValue.value);
       if (isNaN(value)) return volumeResult.innerText = "0";
-
       let m3 = value * volumeFactors[volumeFrom.value];
       let result = m3 / volumeFactors[volumeTo.value];
-
       volumeResult.innerText = result.toFixed(6);
     }
 
@@ -145,23 +130,20 @@ document.addEventListener("DOMContentLoaded", function () {
     volumeTo.addEventListener("change", convertVolume);
   }
 
-
   /* =========================
      TEMPERATURE CONVERTER
   ========================= */
   const tempValue = document.getElementById("tempValue");
-  const tempFrom = document.getElementById("fromUnit");
-  const tempTo = document.getElementById("toUnit");
+  const tempFrom = document.getElementById("tempFrom");
+  const tempTo = document.getElementById("tempTo");
   const tempResult = document.getElementById("tempResult");
 
   if (tempValue && tempFrom && tempTo && tempResult) {
-
     function convertTemp() {
       let value = parseFloat(tempValue.value);
       if (isNaN(value)) return tempResult.innerText = "0";
 
       let celsius;
-
       switch (tempFrom.value) {
         case "celsius": celsius = value; break;
         case "fahrenheit": celsius = (value - 32) * 5/9; break;
@@ -169,7 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       let result;
-
       switch (tempTo.value) {
         case "celsius": result = celsius; break;
         case "fahrenheit": result = celsius * 9/5 + 32; break;
@@ -184,118 +165,80 @@ document.addEventListener("DOMContentLoaded", function () {
     tempTo.addEventListener("change", convertTemp);
   }
 
-});
+  /* =========================
+     CURRENCY CONVERTER
+  ========================= */
+  let rates = {};
+  let baseCurrency = "EUR";
 
-// Currency
-let liveRates = {};
-
-// Fetch live rates from a reliable API
-async function fetchRates() {
-  try {
-    const response = await fetch("https://api.exchangerate.host/latest");
-    const data = await response.json();
-    liveRates = data.rates;
-    console.log("Live rates loaded:", liveRates);
-  } catch (error) {
-    console.error("Failed to load rates:", error);
-  }
-}
-
-// Convert function
-let rates = {};
-let baseCurrency = "EUR"; // default from API
-
-// Fetch live rates
-async function fetchRates() {
-  try {
-    const res = await fetch('https://api.exchangerate.host/latest');
-    const data = await res.json();
-    rates = data.rates;
-    baseCurrency = data.base; // usually EUR
-    console.log("Rates loaded:", rates);
-  } catch (err) {
-    console.error("Error fetching rates:", err);
-  }
-}
-
-// Convert currency
-function convertCurrency() {
-  const from = document.getElementById("fromCurrency").value;
-  const to = document.getElementById("toCurrency").value;
-  const amount = parseFloat(document.getElementById("amount").value);
-
-  if (!rates[from] || !rates[to]) {
-    document.getElementById("result").innerText = "Loading rates...";
-    return;
-  }
-
-  if (isNaN(amount)) {
-    document.getElementById("result").innerText = "0";
-    return;
-  }
-
-  // Convert from "from" to base, then to "to"
-  const amountInBase = amount / rates[from];
-  const converted = amountInBase * rates[to];
-
-  document.getElementById("result").innerText = converted.toFixed(2);
-}
-
-// Event listeners
-document.getElementById("amount").addEventListener("input", convertCurrency);
-document.getElementById("fromCurrency").addEventListener("change", convertCurrency);
-document.getElementById("toCurrency").addEventListener("change", convertCurrency);
-
-// Initialize
-fetchRates();
-// NAV BAR
-
-$(document).ready(function(){
-
-  $(".card").hover(function(){
-    $(this).css("transform","translateY(-10px)");
-  });
-
-  $(".card").mouseleave(function(){
-    $(this).css("transform","translateY(0px)");
-  });
-
-});
-
-// COUNTER ANIMATION
-const counters = document.querySelectorAll('.counter');
-
-counters.forEach(counter => {
-  counter.innerText = '0'; 
-
-  const updateCounter = () => {
-    const target = +counter.getAttribute('data-target'); 
-    const count = +counter.innerText;
-    const increment = target / 200; 
-
-    if (count < target) {
-      counter.innerText = Math.ceil(count + increment);
-      setTimeout(updateCounter, 10); 
-    } else {
-      counter.innerText = target; 
+  async function fetchRates() {
+    try {
+      const res = await fetch('https://api.exchangerate.host/latest');
+      const data = await res.json();
+      rates = data.rates;
+      baseCurrency = data.base;
+    } catch (err) {
+      console.error("Error fetching rates:", err);
     }
-  };
+  }
 
-  updateCounter();
-});
+  function convertCurrency() {
+    const from = document.getElementById("fromCurrency").value;
+    const to = document.getElementById("toCurrency").value;
+    const amount = parseFloat(document.getElementById("amount").value);
 
-// swap
-const swapBtn = document.getElementById("swapBtn");
+    if (!rates[from] || !rates[to]) {
+      document.getElementById("result").innerText = "Loading rates...";
+      return;
+    }
 
-if (swapBtn && fromUnit && toUnit) {
-  swapBtn.addEventListener("click", function () {
+    if (isNaN(amount)) {
+      document.getElementById("result").innerText = "0";
+      return;
+    }
 
-    let temp = fromUnit.value;
-    fromUnit.value = toUnit.value;
-    toUnit.value = temp;
+    const amountInBase = amount / rates[from];
+    const converted = amountInBase * rates[to];
+    document.getElementById("result").innerText = converted.toFixed(2);
+  }
 
-    fromUnit.dispatchEvent(new Event("change"));
+  document.getElementById("amount")?.addEventListener("input", convertCurrency);
+  document.getElementById("fromCurrency")?.addEventListener("change", convertCurrency);
+  document.getElementById("toCurrency")?.addEventListener("change", convertCurrency);
 
+  fetchRates();
+
+  /* =========================
+     CARD HOVER EFFECT
+  ========================= */
+  $(".card").hover(
+    function() { $(this).css("transform","translateY(-10px)"); },
+    function() { $(this).css("transform","translateY(0px)"); }
+  );
+
+  /* =========================
+     COUNTER ANIMATION
+  ========================= */
+  const counters = document.querySelectorAll('.counter');
+
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+
+    const duration = 2000; // animation duration in ms
+    const stepTime = Math.max(Math.floor(duration / target), 50);
+
+    const updateCounter = () => {
+      count++;
+      counter.innerText = count;
+      if (count < target) {
+        setTimeout(updateCounter, stepTime);
+      } else {
+        counter.innerText = target;
+      }
+    };
+
+    updateCounter();
   });
-}
 
+});

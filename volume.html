@@ -74,14 +74,16 @@
 
         <div class="row g-3">
 
+          <!-- Input -->
           <div class="col-md-4">
             <label class="form-label">Value</label>
             <input type="number" id="volumeValue" class="form-control" placeholder="Enter value">
           </div>
 
+          <!-- From -->
           <div class="col-md-4">
             <label class="form-label">From</label>
-            <select id="fromUnit" class="form-select">
+            <select id="volumeFrom" class="form-select">
               <option value="ml">Milliliter (ml)</option>
               <option value="liters">Liters (L)</option>
               <option value="cu_m">Cubic Meter (m³)</option>
@@ -90,9 +92,10 @@
             </select>
           </div>
 
+          <!-- To -->
           <div class="col-md-4">
             <label class="form-label">To</label>
-            <select id="toUnit" class="form-select">
+            <select id="volumeTo" class="form-select">
               <option value="ml">Milliliter (ml)</option>
               <option value="liters">Liters (L)</option>
               <option value="cu_m">Cubic Meter (m³)</option>
@@ -102,6 +105,8 @@
           </div>
 
         </div>
+
+        <!-- Result -->
         <div class="text-center mt-4">
           <h4>Result</h4>
           <h2 id="volumeResult" class="text-primary fw-bold">0</h2>
